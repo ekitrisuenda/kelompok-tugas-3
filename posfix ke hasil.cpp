@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 using namespace std;
+
 struct Stack
 {
     int top;
@@ -28,8 +29,7 @@ int isEmpty(struct Stack* stack)
 {
     return stack->top == -1 ;
 }
- 
- 
+
 char pop(struct Stack* stack)
 {
     if (!isEmpty(stack))
@@ -41,7 +41,6 @@ void push(struct Stack* stack, char op)
 {
     stack->array[++stack->top] = op;
 }
- 
  
 int evaluatePostfix(char* exp)
 {
