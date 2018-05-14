@@ -1,69 +1,26 @@
+#include<iostream>
+#include <string.h>
+#include <stdlib.h>
+using namespace std;
 
-#include <iostream>
-#include <stack>
-
-using namespace std; 
-
-stack <int> operands;
-int main() 
+struct Stack
 {
-	int item1, item2, item3;
-	char op, op2; 
-	cout << "ekspresi postfix" << endl<<endl;
-	cout<<"masukkan anggka : ";cin >> item1; 
-	operands.push(item1);
-	cout<<"masukkan anggka : ";cin >> item2;
-	operands.push(item2);
-	cout<<"masukkan anggka : ";cin >> item3; 
-	operands.push(item3);
-	cout<<"masukan operands : ";cin >> op;
-	cout<<"masukan operands : ";cin >> op2; 
-
-	if(op =='+')
-		item2 = item3+item2; 
-	if(op=='*')
-		item2 = item3*item2; 
-	if(op=='-')
-	item2 = item3-item2;
-	if(op=='/')
-	item2 = item3/item2; 
-	if(op=='%')
-		item2 = item3%item2;
-
-	item3 = operands.top();
-	operands.pop();
-	item2 = operands.top(); 
-	operands.pop(); 
-	if(op =='+') 
-		item2 = item3+item2; 
-	else if(op=='*')
-		item2 = item3*item2; 
-	else if(op=='-')
-		item2 = item3-item2;
-	else if(op=='/')
-		item2 = item3/item2; 
-	else if(op=='%')
-		item2 = item3%item2;
-	else 
-		cout << "operands salah" << endl; 
-	operands.push(item2);
-
-	operands.pop();
-	operands.pop();
-
-	if(op2 =='+') 
-		item1 = item2+item1;
-	else if(op2=='*')
-		item1 = item2+item1;
-	else if(op2=='-')
-		item1 = item2-item1;
-	else if(op2=='/')
-		item1 = item2/item1;
-	else if(op2=='%')
-		item1=item2%item1; 
-	else
-		 cout << "operands salah" << endl; 
-	operands.push(item1);
-	cout << "jumlah setelah oprasi stack : " << item1 << endl; 
-
+    int top;
+    unsigned capacity;
+    int* array;
+};
+ 
+struct Stack* createStack( unsigned capacity )
+{
+    struct Stack* stack = (struct Stack*) malloc(sizeof(struct Stack));
+ 
+    if (!stack) return NULL;
+ 
+    stack->top = -1;
+    stack->capacity = capacity;
+    stack->array = (int*) malloc(stack->capacity * sizeof(int));
+ 
+    if (!stack->array) return NULL;
+ 
+    return stack;
 }
