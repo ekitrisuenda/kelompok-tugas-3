@@ -72,7 +72,7 @@ int evaluatePostfix(char* exp)
  
 int main()
 {
-    char exp[] = "63-";
+    char exp[] = "543*+4-8-";
     cout<<"hasil dari "<<exp<<" adalah "<< evaluatePostfix(exp);
     return 0;
 }
